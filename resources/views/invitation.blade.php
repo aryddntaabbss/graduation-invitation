@@ -4,7 +4,7 @@
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Graduation Invitation</title>
+        <title>GRADUATION CELEBRATION - M. FIKRI RAMADHANI S.KOM</title>
 
         <script src="https://cdn.tailwindcss.com"></script>
         <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -15,22 +15,24 @@
         <link href="https://fonts.googleapis.com/css2?family=Rammetto+One&display=swap" rel="stylesheet">
 
         <!-- Open Graph (Facebook, WhatsApp, LinkedIn) -->
-        <meta property="og:title" content="Undangan Wisuda UNKHAIR - Umairoh Salsabila Ibrahim, S.S. 🎓">
+        <meta property="og:title" content="GRADUATION CELEBRATION - M. FIKRI RAMADHANI S.KOM">
         <meta property="og:description"
-            content="Dengan hormat, kami mengundang Bapak/Ibu & Saudara/i untuk hadir dalam Wisuda Universitas Khairun Periode 2025–2026 di Hotel Bukit Pelangi, Ternate.">
-        <meta property="og:image" content="{{ asset('TOPI-TOGA.png') }}">
-        <meta property="og:url" content="https://domainanda.com/undangan-wisuda">
+            content="Diharapkan untuk hadir dalam Wisuda Universitas Khairun Periode 2025–2026">
+        <meta property="og:image" content="{{ asset('images/banner.jpg') }}">
+        <meta property="og:url" content="https://m-fikri-ramadhani.tong-it.site/">
         <meta property="og:type" content="website">
 
         <!-- Twitter Card -->
         <meta name="twitter:card" content="summary_large_image">
-        <meta name="twitter:title" content="Undangan Wisuda UNKHAIR - Umairoh Salsabila Ibrahim, S.S. 🎓">
+        <meta name="twitter:title" content="GRADUATION CELEBRATION - M. FIKRI RAMADHANI S.KOM">
         <meta name="twitter:description"
-            content="Wisuda Universitas Khairun Periode 2025–2026 di Hotel Bukit Pelangi, Ternate.">
-        <meta name="twitter:image" content="{{ asset('TOPI-TOGA.png') }}">
+            content="Diharapkan untuk hadir dalam Wisuda Universitas Khairun Periode 2025–2026">
+        <meta name="twitter:image" content="{{ asset('images/banner.jpg') }}">
+        <meta name="twitter:url" content="https://m-fikri-ramadhani.tong-it.site/">
+
 
         <!-- Favicon -->
-        <link rel="icon" href="{{ asset('TOPI-TOGA.png') }}" type="image/png">
+        <link rel="icon" href="{{ asset('images/TOPI-TOGA.png') }}" type="image/png">
 
         <script src="https://cdn.jsdelivr.net/npm/qrcodejs@1.0.0/qrcode.min.js"></script>
         <style>
