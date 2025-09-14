@@ -52,10 +52,9 @@
 
     <body class="font-sans text-white relative min-h-screen">
 
-        <!-- Musik Latar -->
-        {{-- <audio autoplay loop>
-            <source src="{{ asset('audio/Gembira-Adalah-Obat.mp3') }}" type="audio/mpeg">
-        </audio> --}}
+        <div id="loading" class="fixed inset-0 bg-black flex items-center justify-center z-50">
+            <div class="w-16 h-16 border-4 border-gray-300 border-t-blue-500 rounded-full animate-spin"></div>
+        </div>
 
         <!-- Background & Konten Tengah -->
         <div class="relative min-h-screen flex items-center justify-center text-center">
@@ -158,6 +157,16 @@
                 </div>
             </div>
         </div>
+
+        <script>
+            window.addEventListener('load', function() {
+                const loader = document.getElementById('loading');
+                const app = document.getElementById('app');
+        
+                loader.style.display = 'none'; // sembunyikan loader
+                app.classList.remove('hidden'); // tampilkan konten utama
+            });
+        </script>
 
     </body>
 
