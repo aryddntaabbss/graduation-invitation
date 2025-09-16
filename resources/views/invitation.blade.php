@@ -8,9 +8,12 @@ $page = \App\Models\PageSetting::first();
 
 <div class="relative min-h-screen flex flex-col items-center justify-between text-center">
 
+
     <!-- Row 1: Header -->
-    <div class="w-full">
-        <h2 class="mt-4 text-xl sm:text-2xl md:text-3xl font-extrabold uppercase tracking-wide font-rammetto-one">
+    <div class="w-full mt-4">
+        <h1 class="text-2xl sm:text-2xl md:text-3xl tracking-wide font-dancing">- Welcome, {{ $guestName }} -
+        </h1>
+        <h2 class="text-2xl sm:text-3xl md:text-4xl uppercase tracking-wide font-anton">
             {{ $page->header_text}}
         </h2>
     </div>
@@ -27,8 +30,8 @@ $page = \App\Models\PageSetting::first();
 
         <!-- Nama & Keterangan -->
         <div class="text-center mb-4">
-            <p class="text-lg sm:text-xl md:text-2xl font-extrabold uppercase mb-1 font-rammetto-one">
-                IN HONOR OF
+            <p class="text-2xl sm:text-3xl md:text-4xl uppercase tracking-wide font-anton">
+                {{ $page->degree }}
             </p>
             <p class="text-3xl sm:text-4xl md:text-4xl font-dancing font-semibold mb-1">
                 {{ $page->name }}

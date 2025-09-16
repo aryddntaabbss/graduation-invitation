@@ -12,7 +12,9 @@
         <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;900&display=swap"
             rel="stylesheet">
         <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;700&display=swap" rel="stylesheet">
-        <link href="https://fonts.googleapis.com/css2?family=Rammetto+One&display=swap" rel="stylesheet">
+        <link
+            href="https://fonts.googleapis.com/css2?family=Anton&family=Arimo:ital,wght@0,400..700;1,400..700&display=swap"
+            rel="stylesheet">
 
         <!-- SEO Meta Tags -->
         <meta property="og:title" content="{{ $appSetting->og_title }}">
@@ -35,8 +37,8 @@
                 font-family: 'Dancing Script', cursive;
             }
 
-            .font-rammetto-one {
-                font-family: "Rammetto One", sans-serif;
+            .font-anton {
+                font-family: "Anton", sans-serif;
             }
         </style>
 

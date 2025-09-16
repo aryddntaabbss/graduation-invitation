@@ -31,7 +31,8 @@ class PageSettingForm
                     ->label('Nama'),
 
                 TextInput::make('degree')
-                    ->label('Gelar / Degree'),
+                    ->label('Header Text 2')
+                    ->placeholder('In Honor of'),
 
                 TextInput::make('class_info')
                     ->label('Informasi Kelas')
