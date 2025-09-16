@@ -29,6 +29,22 @@
 
         <script src="https://cdn.jsdelivr.net/npm/qrcodejs@1.0.0/qrcode.min.js"></script>
         <style>
+            @keyframes marquee {
+                0% {
+                    transform: translateX(100%);
+                }
+
+                100% {
+                    transform: translateX(-100%);
+                }
+            }
+
+            .animate-marquee {
+                display: inline-block;
+                white-space: nowrap;
+                animation: marquee 20s linear infinite;
+            }
+
             body {
                 font-family: 'Montserrat', sans-serif;
             }

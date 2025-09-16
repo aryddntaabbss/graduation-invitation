@@ -15,14 +15,14 @@ Route::get('/guest', function () {
 Route::post('/guest', function (Request $request) {
     $request->validate([
         'name' => 'required|string|max:100',
+        'message' => 'nullable|string|max:500',
     ]);
 
-    // Simpan ke session
     session(['guest_name' => $request->name]);
 
-    // Simpan ke database
     Guest::create([
         'name' => $request->name,
+        'message' => $request->message,
     ]);
 
     return redirect()->route('invitation');
@@ -31,6 +31,7 @@ Route::post('/guest', function (Request $request) {
 
 Route::get('/invitation', function () {
     $page = \App\Models\PageSetting::first();
-    $guestName = session('guest_name', 'Tamu Undangan');
+    $guest = \App\Models\Guest::latest()->first();
+    $guestName = $guest ? $guest->name : 'Tamu Undangan';
     return view('invitation', compact('page', 'guestName'));
 })->name('invitation');

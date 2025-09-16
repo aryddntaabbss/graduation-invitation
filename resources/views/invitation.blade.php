@@ -70,6 +70,17 @@ $page = \App\Models\PageSetting::first();
         </div>
         @endif
 
+        <!-- Running Messages -->
+        <div class="bottom-0 left-0 w-full bg-pink-950 text-white py-2  overflow-hidden mt-4">
+            <div class="whitespace-nowrap animate-marquee">
+                @foreach(\App\Models\Guest::latest()->get() as $guest)
+                <span class="mx-8 font-normal">
+                    {{ $guest->name }} : <span class="italic">"{{ $guest->message }}""</span>
+                </span>
+                @endforeach
+            </div>
+        </div>
+
         <!-- Tombol Musik -->
         <div id="music-control"
             class="fixed bottom-6 right-6 w-10 h-10 bg-pink-900 rounded-full flex items-center justify-center shadow-lg cursor-pointer hover:bg-pink-400 transition">
