@@ -71,10 +71,10 @@ $page = \App\Models\PageSetting::first();
         @endif
 
         <!-- Running Messages -->
-        <div class="bottom-0 left-0 w-full bg-pink-950 text-white py-2  overflow-hidden mt-4">
+        <div class="bottom-0 max-w-96 bg-pink-950 text-white py-2 overflow-hidden mt-4">
             <div class="whitespace-nowrap animate-marquee">
                 @foreach(\App\Models\Guest::latest()->get() as $guest)
-                <span class="mx-8 font-normal">
+                <span class="mx-4 font-normal">
                     {{ $guest->name }} : <span class="italic">"{{ $guest->message }}""</span>
                 </span>
                 @endforeach

@@ -2,7 +2,9 @@
 
 use Illuminate\Support\Facades\Route;
 use Illuminate\Http\Request;
+use App\Models\PageSetting;
 use App\Models\Guest;
+use Illuminate\Support\Str;
 
 Route::get('/', function () {
     return redirect()->route('guest.form');
@@ -18,20 +20,20 @@ Route::post('/guest', function (Request $request) {
         'message' => 'nullable|string|max:500',
     ]);
 
-    session(['guest_name' => $request->name]);
-
-    Guest::create([
+    $guest = Guest::create([
         'name' => $request->name,
         'message' => $request->message,
+        'slug' => Str::slug($request->name) . '-' . uniqid(),
     ]);
 
-    return redirect()->route('invitation');
+    return redirect()->route('invitation', $guest->slug);
 })->name('guest.store');
 
 
-Route::get('/invitation', function () {
-    $page = \App\Models\PageSetting::first();
-    $guest = \App\Models\Guest::latest()->first();
-    $guestName = $guest ? $guest->name : 'Tamu Undangan';
+Route::get('/invitation/{slug}', function ($slug) {
+    $page = PageSetting::first();
+    $guest = Guest::where('slug', $slug)->firstOrFail();
+    $guestName = $guest->name;
+
     return view('invitation', compact('page', 'guestName'));
 })->name('invitation');
