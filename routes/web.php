@@ -7,33 +7,22 @@ use App\Models\Guest;
 use Illuminate\Support\Str;
 
 Route::get('/', function () {
-    return redirect()->route('guest.form');
-});
+    $page = PageSetting::first();
+    return view('invitation', compact('page'));
+})->name('invitation');
 
-Route::get('/guest', function () {
-    return view('guest');
-})->name('guest.form');
-
+// Simpan pesan tamu langsung dari modal
 Route::post('/guest', function (Request $request) {
     $request->validate([
         'name' => 'required|string|max:100',
-        'message' => 'nullable|string|max:500',
+        'message' => 'required|string|max:500',
     ]);
 
-    $guest = Guest::create([
+    Guest::create([
         'name' => $request->name,
         'message' => $request->message,
         'slug' => Str::slug($request->name) . '-' . uniqid(),
     ]);
 
-    return redirect()->route('invitation', $guest->slug);
+    return back()->with('success', 'Pesan berhasil dikirim!');
 })->name('guest.store');
-
-
-Route::get('/invitation/{slug}', function ($slug) {
-    $page = PageSetting::first();
-    $guest = Guest::where('slug', $slug)->firstOrFail();
-    $guestName = $guest->name;
-
-    return view('invitation', compact('page', 'guestName'));
-})->name('invitation');

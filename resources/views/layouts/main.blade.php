@@ -4,28 +4,34 @@
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>{{ $appSetting->title ?? 'GRADUATION CELEBRATION - M. FIKRI RAMADHANI S.KOM' }}</title>
+        <title>{{ 'GRADUATION CELEBRATION - UMAIROH SALSABILA IBRAHIM S.S' }}</title>
 
         <script src="https://cdn.tailwindcss.com"></script>
         <link rel="preconnect" href="https://fonts.googleapis.com">
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-        <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;900&display=swap"
-            rel="stylesheet">
-        <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;700&display=swap" rel="stylesheet">
-        <link
-            href="https://fonts.googleapis.com/css2?family=Anton&family=Arimo:ital,wght@0,400..700;1,400..700&display=swap"
+        <link href="https://fonts.googleapis.com/css2?family=Mea+Culpa&display=swap" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css2?family=Inter+Tight:ital,wght@0,100..900;1,100..900&display=swap"
             rel="stylesheet">
 
-        <!-- SEO Meta Tags -->
-        <meta property="og:title" content="{{ $appSetting->og_title }}">
-        <meta property="og:description" content="{{ $appSetting->og_description }}">
-        <meta property="og:image" content="{{ asset('storage/' . $appSetting->og_image) }}">
-        <meta name="twitter:title" content="{{ $appSetting->twitter_title }}">
-        <meta name="twitter:description" content="{{ $appSetting->twitter_description }}">
-        <meta name="twitter:image" content="{{ asset('storage/' . $appSetting->twitter_image) }}">
+        <!-- Open Graph (Facebook, WhatsApp, LinkedIn) -->
+        <meta property="og:title" content="GRADUATION CELEBRATION - UMAIROH SALSABILA IBRAHIM S.S">
+        <meta property="og:description"
+            content="Wisuda Universitas Khairun Periode 2025–2026 di Hotel Bukit Pelangi, Ternate.">
+        <meta property="og:image" content="{{ asset('images/banner.png') }}">
+        <meta property="og:url" content="https://umairohsalsabilaibrahim.tong-it.site">
+        <meta property="og:type" content="website">
+
+        <!-- Twitter Card -->
+        <meta name="twitter:card" content="summary_large_image">
+        <meta name="twitter:title" content="GRADUATION CELEBRATION - UMAIROH SALSABILA IBRAHIM S.S">
+        <meta name="twitter:description"
+            content="Wisuda Universitas Khairun Periode 2025–2026 di Hotel Bukit Pelangi, Ternate.">
+        <meta name="twitter:image" content="{{ asset('images/banner.png') }}">
 
         <!-- Favicon -->
-        <link rel="icon" href="{{ asset('storage/' . $appSetting->favicon) }}">
+        <link rel="icon" href="{{ asset('TOPI-TOGA.png') }}" type="image/png">
+
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.2.1/flowbite.min.js"></script>
 
         <script src="https://cdn.jsdelivr.net/npm/qrcodejs@1.0.0/qrcode.min.js"></script>
         <style>
@@ -46,15 +52,15 @@
             }
 
             body {
-                font-family: 'Montserrat', sans-serif;
+                font-family: "Alumni Sans Pinstripe", sans-serif;
             }
 
-            .font-dancing {
-                font-family: 'Dancing Script', cursive;
+            .font-mea-culpa {
+                font-family: "Mea Culpa", cursive;
             }
 
-            .font-anton {
-                font-family: "Anton", sans-serif;
+            .font-alumni {
+                font-family: "Inter Tight", sans-serif;
             }
         </style>
 
@@ -65,24 +71,22 @@
     $page = \App\Models\PageSetting::first();
     @endphp
 
-    <body class="font-sans text-white relative min-h-screen">
+    <body class="font-sans text-white relative min-h-screen overflow-x-hidden">
 
         <!-- Loader -->
-        <div id="loading" class="fixed inset-0 bg-black flex items-center justify-center z-50">
-            <div class="w-16 h-16 border-4 border-gray-300 border-t-blue-500 rounded-full animate-spin"></div>
+        <div id="loading" class="fixed inset-0 bg-white/50 backdrop-blur-sm flex items-center justify-center z-50">
+            <div class="w-16 h-16 border-4 border-gray-300 border-t-pink-400 rounded-full animate-spin"></div>
         </div>
 
         <!-- Background & Konten Tengah -->
         <div class="relative min-h-screen flex items-center justify-center text-center">
 
-            @if($page && $page->background)
-            <img src="{{ asset('storage/'.$page->background) }}" alt="Background"
+            <img src="{{ asset('images/background.jpg')}}" alt="Background"
                 class="absolute inset-0 w-full h-full object-cover">
-            @endif
-            <div class="absolute inset-0 bg-black/30"></div> <!-- overlay -->
+            <div class="absolute inset-0 bg-black/20"></div> <!-- overlay -->
 
             <!-- Page Content -->
-            <main class="w-auto bg-white">
+            <main class="w-auto z-10 px-4 py-6">
                 @yield('body')
             </main>
 
