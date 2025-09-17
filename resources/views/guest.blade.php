@@ -4,8 +4,8 @@
 <div class="relative flex-col  text-center flex items-center justify-center min-h-screen mx-4">
     <div class="bg-white text-gray-950 p-6 rounded-lg shadow-lg w-full max-w-md">
 
-        <img src="{{ asset('storage/' . $appSetting->favicon) }}" alt="Hero Logo"
-            class="w-auto h-20 object-contain items-center justify-center mx-auto mb-4">
+        {{-- <img src="{{ asset('storage/' . $appSetting->favicon) }}" alt="Hero Logo"
+        class="w-auto h-20 object-contain items-center justify-center mx-auto mb-4"> --}}
         <h2 class="text-2xl font-bold mb-4 text-center">Confirm Your Attendance</h2>
         <form action="{{ route('guest.store') }}" method="POST">
             @csrf

@@ -2,13 +2,11 @@
 
 use Illuminate\Support\Facades\Route;
 use Illuminate\Http\Request;
-use App\Models\PageSetting;
 use App\Models\Guest;
 use Illuminate\Support\Str;
 
 Route::get('/', function () {
-    $page = PageSetting::first();
-    return view('invitation', compact('page'));
+    return view('invitation');
 })->name('invitation');
 
 // Simpan pesan tamu langsung dari modal

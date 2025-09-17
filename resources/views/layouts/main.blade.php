@@ -67,10 +67,6 @@
         @vite('resources/css/app.css')
     </head>
 
-    @php
-    $page = \App\Models\PageSetting::first();
-    @endphp
-
     <body class="font-sans text-white relative min-h-screen overflow-x-hidden">
 
         <!-- Loader -->

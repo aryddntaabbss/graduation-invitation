@@ -1,9 +1,5 @@
 @extends('layouts.main')
 
-@php
-$page = \App\Models\PageSetting::first();
-@endphp
-
 @section('body')
 
 <div class="relative min-h-screen flex flex-col items-center justify-between text-center">
