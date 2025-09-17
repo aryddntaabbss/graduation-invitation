@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\Admin\GuestController;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Http\Request;
 use App\Models\Guest;
@@ -24,3 +26,22 @@ Route::post('/guest', function (Request $request) {
 
     return back()->with('success', 'Pesan berhasil dikirim!');
 })->name('guest.store');
+
+
+Route::middleware(['auth'])->prefix('admin')->name('admin.')->group(function () {
+    Route::resource('guests', GuestController::class);
+});
+
+Route::get('/dashboard', function () {
+    $guestCount = \App\Models\Guest::count();
+    return view('dashboard', compact('guestCount'));
+})->middleware(['auth'])->name('dashboard');
+
+
+Route::middleware('auth')->group(function () {
+    Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
+    Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
+    Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
+});
+
+require __DIR__ . '/auth.php';

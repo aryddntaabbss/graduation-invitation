@@ -43,7 +43,7 @@
                 Saturday
             </div>
             <div class="flex-1 bg-white/50 py-4 rounded-lg text-center text-pink-400">
-                <div class="text-5xl sm:text-6xl md:text-7xl font-bold">27</div>
+                <div class="text-5xl sm:text-6xl md:text-7xl font-semibold">27</div>
                 <div class="text-lg sm:text-xl md:text-2xl font-semibold">September</div>
             </div>
             <div class="flex-1 text-left text-white font-semibold text-lg sm:text-xl md:text-2xl">
@@ -102,7 +102,7 @@
                         Leave a Message
                     </h3>
                     <button id="closeGuestModal"
-                        class="text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm w-8 h-8 flex items-center justify-center dark:hover:bg-gray-600 dark:hover:text-white">
+                        class="text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm w-8 h-8 flex items-center justify-center">
                         ✖
                     </button>
                 </div>

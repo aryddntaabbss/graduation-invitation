@@ -84,6 +84,22 @@
             <!-- Page Content -->
             <main class="w-auto z-10 px-4 py-6">
                 @yield('body')
+
+                <!-- Musik Latar -->
+                <audio id="background-music" autoplay loop muted>
+                    <source src="{{ asset('audio/backsound.mp3') }}" type="audio/mpeg">
+                    Browser kamu tidak mendukung elemen audio.
+                </audio>
+
+                <!-- Tombol Kontrol Musik -->
+                <button id="music-control"
+                    class="fixed bottom-6 right-6 bg-pink-400 text-white p-3 rounded-full shadow-lg hover:bg-pink-500 transition">
+                    <svg id="music-icon" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+                        stroke="currentColor" class="w-6 h-6">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="M14.752 11.168l-6.518-3.758A1 1 0 007 8.254v7.492a1 1 0 001.234.972l6.518-1.884a1 1 0 000-1.848z" />
+                    </svg>
+                </button>
             </main>
 
         </div>
@@ -91,34 +107,39 @@
             // Sembunyikan loader saat halaman sudah dimuat
             window.addEventListener('load', function() {
                 const loader = document.getElementById('loading');
+                if (loader) loader.style.display = 'none';
         
-                if (loader) {
-                    loader.style.display = 'none'; // sembunyikan loader
-                }
+                // coba play musik dengan unmute otomatis
+                const audio = document.getElementById('background-music');
+                audio.muted = false; 
+                audio.play().then(() => {
+                    console.log("Musik autoplay berhasil diputar");
+                }).catch((err) => {
+                    console.log("Autoplay dicegah browser:", err);
+                });
             });
-
+        
             // Kontrol Musik
             const audio = document.getElementById('background-music');
             const musicControl = document.getElementById('music-control');
             const musicIcon = document.getElementById('music-icon');
-            
-            let isPlaying = false;
-            
+        
+            let isPlaying = true;
+        
             musicControl.addEventListener('click', () => {
-            if (!isPlaying) {
-            audio.muted = false; 
-            audio.play();
-            isPlaying = true;
-            musicIcon.innerHTML = `
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />`;
-            } else {
-            audio.pause();
-            isPlaying = false;
-            musicIcon.innerHTML = `
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                d="M14.752 11.168l-6.518-3.758A1 1 0 007 8.254v7.492a1 1 0 001.234.972l6.518-1.884a1 1 0 000-1.848z" />`;
-            "play"
-            }
+                if (isPlaying) {
+                    audio.pause();
+                    isPlaying = false;
+                    musicIcon.innerHTML = `
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                        d="M14.752 11.168l-6.518-3.758A1 1 0 007 8.254v7.492a1 1 0 001.234.972l6.518-1.884a1 1 0 000-1.848z" />`;
+                } else {
+                    audio.muted = false;
+                    audio.play();
+                    isPlaying = true;
+                    musicIcon.innerHTML = `
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />`;
+                }
             });
         </script>
     </body>
