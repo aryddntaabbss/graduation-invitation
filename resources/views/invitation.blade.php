@@ -1,3 +1,8 @@
+@php
+// $guest mungkin null jika buka halaman utama
+$hasGuest = isset($guest) && $guest !== null;
+@endphp
+
 @extends('layouts.main')
 
 @section('body')
@@ -71,25 +76,29 @@
         <!-- Guest Messages Carousel -->
         <div class="w-screen px-4 mt-6">
             <div class="flex gap-4 overflow-x-auto snap-x snap-mandatory pb-4">
-                @foreach(\App\Models\Guest::latest()->get() as $guest)
+                @foreach($guests as $g)
+                @if(!empty($g->message))
                 <div
                     class="min-w-[250px] bg-white/50 backdrop-blur-md border rounded-xl shadow-md p-4 text-center snap-start">
                     <p class="text-normal sm:text-md md:text-lg font-semibold text-pink-400 font-alumni">
-                        {{ $guest->name }}
+                        {{ $g->name }}
                     </p>
                     <p class="italic text-pink-400 font-alumni">
-                        "{{ $guest->message }}"
+                        "{{ $g->message }}"
                     </p>
                 </div>
+                @endif
                 @endforeach
             </div>
         </div>
 
-        <!-- Tombol buka modal -->
+        <!-- Tombol Leave a Message: tampil hanya untuk guest saat ini yang belum isi pesan -->
+        @if(isset($guest) && trim((string)$guest->message) === '')
         <button id="openGuestModal"
             class="bg-pink-400 hover:bg-pink-500 text-white px-4 py-2 rounded-lg shadow transition">
             Leave a Message
         </button>
+        @endif
 
         <!-- Modal -->
         <div id="guestModal"
@@ -111,16 +120,19 @@
                 <div class="p-6 space-y-6 max-h-[70vh] overflow-y-auto">
 
                     <!-- Form Input Pesan -->
-                    <form action="{{ route('guest.store') }}" method="POST" class="space-y-4">
+                    <form action="{{ route('guest.update', $guest->slug) }}" method="POST" class="space-y-4">
                         @csrf
+                        @method('PUT') {{-- ini penting untuk Laravel update --}}
+
                         <div>
                             <input type="text" name="name" placeholder="Nama Anda" required
-                                class="w-full px-3 py-2 mt-1 border text-gray-800 rounded-lg shadow-sm focus:ring-pink-500 focus:border-pink-500  ">
+                                value="{{ $guest->name ?? '' }}"
+                                class="w-full px-3 py-2 mt-1 border text-gray-800 rounded-lg shadow-sm focus:ring-pink-500 focus:border-pink-500">
                         </div>
 
                         <div>
-                            <input name="message" placeholder="Pesan Anda" rows="3" required
-                                class="w-full px-3 py-2 mt-1 border text-gray-800 rounded-lg shadow-sm focus:ring-pink-500 focus:border-pink-500 "></input>
+                            <textarea name="message" placeholder="Pesan Anda" rows="3" required
+                                class="w-full px-3 py-2 mt-1 border text-gray-800 rounded-lg shadow-sm focus:ring-pink-500 focus:border-pink-500">{{ $guest->message ?? '' }}</textarea>
                         </div>
 
                         <div class="flex justify-end gap-2">
@@ -130,7 +142,7 @@
                             </button>
                             <button type="submit"
                                 class="bg-pink-400 hover:bg-pink-500 text-white px-4 py-2 rounded-lg shadow transition">
-                                Send
+                                Update
                             </button>
                         </div>
                     </form>
@@ -138,9 +150,26 @@
             </div>
         </div>
 
-        <!-- Script untuk modal -->
-        <script>
-            const modal = document.getElementById('guestModal');
+        <!-- Musik Latar -->
+        <audio id="background-music" loop>
+            <source src="{{ asset('audio/backsound.mp3') }}" type="audio/mpeg">
+            Browser kamu tidak mendukung elemen audio.
+        </audio>
+
+        <!-- Tombol Kontrol Musik -->
+        <button id="music-control"
+            class="fixed bottom-6 right-6 bg-pink-400 text-white p-3 rounded-full shadow-lg hover:bg-pink-500 transition">
+            <svg id="music-icon" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+                stroke="currentColor" class="w-6 h-6">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                    d="M14.752 11.168l-6.518-3.758A1 1 0 007 8.254v7.492a1 1 0 001.234.972l6.518-1.884a1 1 0 000-1.848z" />
+            </svg>
+        </button>
+
+    </div>
+    <!-- Script untuk modal -->
+    <script>
+        const modal = document.getElementById('guestModal');
             const openBtn = document.getElementById('openGuestModal');
             const closeBtn = document.getElementById('closeGuestModal');
             const closeBtnFooter = document.getElementById('closeGuestModalFooter');
@@ -163,9 +192,7 @@
             modal.classList.add('hidden');
             }
             });
-        </script>
-
-    </div>
+    </script>
 </div>
 
 @endsection

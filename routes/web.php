@@ -3,37 +3,21 @@
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\Admin\GuestController;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\InvitationController;
 use Illuminate\Http\Request;
 use App\Models\Guest;
 use Illuminate\Support\Str;
 
-Route::get('/', function () {
-    return view('invitation');
-})->name('invitation');
-
-// Simpan pesan tamu langsung dari modal
-Route::post('/guest', function (Request $request) {
-    $request->validate([
-        'name' => 'required|string|max:100',
-        'message' => 'required|string|max:500',
-    ]);
-
-    Guest::create([
-        'name' => $request->name,
-        'message' => $request->message,
-        'slug' => Str::slug($request->name) . '-' . uniqid(),
-    ]);
-
-    return back()->with('success', 'Pesan berhasil dikirim!');
-})->name('guest.store');
-
+Route::get('/welcome/{slug}', [InvitationController::class, 'welcome'])->name('invitation.welcome');
+Route::get('/invitation/{slug}', [InvitationController::class, 'index'])->name('invitation');
+Route::put('/invitation/{slug}', [InvitationController::class, 'update'])->name('guest.update');
 
 Route::middleware(['auth'])->prefix('admin')->name('admin.')->group(function () {
     Route::resource('guests', GuestController::class);
 });
 
 Route::get('/dashboard', function () {
-    $guestCount = \App\Models\Guest::count();
+    $guestCount = Guest::count();
     return view('dashboard', compact('guestCount'));
 })->middleware(['auth'])->name('dashboard');
 

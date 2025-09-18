@@ -32,14 +32,24 @@
                             <td class="px-4 py-2">{{ $guest->message }}</td>
                             <td class="px-4 py-2">{{ $guest->slug }}</td>
                             <td class="px-4 py-2">
+                                <!-- Edit -->
                                 <a href="{{ route('admin.guests.edit', $guest) }}"
                                     class="text-blue-600 hover:underline">Edit</a>
+
+                                <!-- Delete -->
                                 <form action="{{ route('admin.guests.destroy', $guest) }}" method="POST" class="inline">
                                     @csrf
                                     @method('DELETE')
                                     <button type="submit" onclick="return confirm('Yakin mau hapus?')"
                                         class="text-red-600 hover:underline ml-2">Delete</button>
                                 </form>
+
+                                <!-- Share -->
+                                <button type="button"
+                                    onclick="copyToClipboard('{{ 'https://umairohsalsabilaibrahim.tong-it.site/welcome/' . $guest->slug }}')"
+                                    class="text-green-600 hover:underline ml-2">
+                                    Share
+                                </button>
                             </td>
                         </tr>
                         @endforeach
@@ -58,5 +68,13 @@
         document.addEventListener("DOMContentLoaded", function () {
             new DataTable('#guestsTable');
         });
+        
+        function copyToClipboard(link) {
+            navigator.clipboard.writeText(link).then(() => {
+                alert("Link berhasil disalin: " + link);
+            }).catch(err => {
+                console.error("Gagal menyalin link: ", err);
+            });
+        }
     </script>
 </x-app-layout>
