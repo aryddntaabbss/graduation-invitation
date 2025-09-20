@@ -9,8 +9,11 @@
         <script src="https://cdn.tailwindcss.com"></script>
         <link rel="preconnect" href="https://fonts.googleapis.com">
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-        <link href="https://fonts.googleapis.com/css2?family=Mea+Culpa&display=swap" rel="stylesheet">
-        <link href="https://fonts.googleapis.com/css2?family=Inter+Tight:ital,wght@0,100..900;1,100..900&display=swap"
+        <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;900&display=swap"
+            rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;700&display=swap" rel="stylesheet">
+        <link
+            href="https://fonts.googleapis.com/css2?family=Anton&family=Arimo:ital,wght@0,400..700;1,400..700&display=swap"
             rel="stylesheet">
 
         <!-- Open Graph (Facebook, WhatsApp, LinkedIn) -->
@@ -53,15 +56,15 @@
             }
 
             body {
-                font-family: "Alumni Sans Pinstripe", sans-serif;
+                font-family: 'Montserrat', sans-serif;
             }
 
-            .font-mea-culpa {
-                font-family: "Mea Culpa", cursive;
+            .font-dancing {
+                font-family: 'Dancing Script', cursive;
             }
 
-            .font-alumni {
-                font-family: "Inter Tight", sans-serif;
+            .font-anton {
+                font-family: "Anton", sans-serif;
             }
         </style>
 
@@ -83,9 +86,9 @@
             <div class="absolute inset-0 bg-black/20"></div> <!-- overlay -->
 
             <!-- Page Content -->
-            <main class="w-auto h-full z-10 py-4">
+            <main class="w-auto h-full z-10 py-5">
                 @yield('body')
-                
+
             </main>
         </div>
         <script>

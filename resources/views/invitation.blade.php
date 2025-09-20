@@ -7,72 +7,61 @@ $hasGuest = isset($guest) && $guest !== null;
 
 @section('body')
 
-<div class="relative min-h-screen flex flex-col items-center justify-between text-center px-4">
+<div class="relative min-h-screen flex flex-col items-center justify-between text-center">
 
-    <!-- Row 1: Hero Carousel -->
-    <div id="animation-carousel" class="relative w-full" data-carousel="slide">
-        <!-- Carousel wrapper -->
-        <div class="relative h-72 w-screen overflow-hidden rounded-lg">
-            @for($i = 1; $i <= 5; $i++) <div class="hidden duration-700 ease-in-out"
-                data-carousel-item="{{ $i === 1 ? 'active' : '' }}">
-                <img src="{{ asset('images/'.$i.'.png') }}" class="block w-full h-full object-contain mx-auto"
-                    alt="Hero {{ $i }}">
-        </div>
-        @endfor
+    <!-- Row 1: Header -->
+    <div class="w-full">
+        <h2 class="text-2xl sm:text-3xl md:text-4xl uppercase tracking-wide font-anton">
+            We Invited You To
+        </h2>
     </div>
 
-    <!-- Row 2: Header -->
-    <!--<div class="w-full mt-4">-->
-        
-    <!--</div>-->
+    <!-- Row 2: Gambar Hero -->
+    <div class="flex justify-center flex-1 items-center">
+        <img src="{{ asset('images/heroku.png') }}" alt="Hero Logo" class="w-auto object-contain">
+    </div>
 
     <!-- Row 3: Konten Nama, Tanggal, Alamat, Tombol -->
     <div class="w-full">
-
         <!-- Nama & Keterangan -->
         <div class="text-center m-4">
-            <p class="text-3xl sm:text-5xl md:text-5xl font-mea-culpa mb-1 font-bold text-pink-400">
-                Umairoh Salsabila Ibrahim S.S
+            <h2 class="text-2xl sm:text-3xl md:text-4xl uppercase tracking-wide font-anton">
+                Honor Of
+            </h2>
+            <p class="text-3xl sm:text-4xl md:text-4xl font-dancing font-semibold mb-1">
+                M. Fikri Ramadhani S.Kom
             </p>
 
-            <p class="text-semibold sm:text-md md:text-lg -mt-2 font-alumni">
-                Angkatan 2025 - Sastra Inggris, Universitas Khairun
+            <p class="text-xs sm:text-sm md:text-base uppercase text-gray-200">
+                CLASS OF 2025 - INFORMATICS UNKHAIR TERNATE
             </p>
         </div>
-        
-        <h2 class="text-normal sm:text-md md:text-lg tracking-wide font-alumni mb-2">
-            Kami dengan hormat mengundang Anda untuk hadir dalam perayaan wisuda saya pada tanggal.
-        </h2>
 
         <!-- Tanggal -->
-        <div class="flex justify-center gap-4 items-center text-center mb-2 font-alumni">
-            <div class="flex-1 text-right text-white font-semibold text-lg sm:text-xl md:text-2xl">
-                Sabtu
+        <div class="flex justify-center gap-4 items-center text-center mb-2">
+            <div class="flex-1 text-right text-white font-bold text-base sm:text-lg md:text-xl">
+                Saturday
             </div>
-            <div class="flex-1 bg-white/50 py-4 rounded-lg text-center text-pink-400">
-                <div class="text-3xl sm:text-4xl md:text-5xl font-semibold">27</div>
-                <div class="text-lg sm:text-xl md:text-2xl font-semibold">September</div>
+            <div class="flex-1 text-center text-white">
+                <div class="text-6xl sm:text-6xl md:text-7xl font-bold">27</div>
+                <div class="text-base sm:text-lg md:text-xl">September</div>
             </div>
-            <div class="flex-1 text-left text-white font-semibold text-lg sm:text-xl md:text-2xl">
-                11:00 PM
+            <div class="flex-1 text-left text-white font-bold text-base sm:text-lg md:text-xl">
+                11 PM
             </div>
         </div>
 
         <!-- Alamat -->
-        <a href="https://maps.app.goo.gl/oGUmtZt3HwWyXwEu9" target="_blank"
-            class="text-normal sm:text-md md:text-lg leading-relaxed font-alumni mx-2 underline hover:text-pink-400">
-            Hotel Bukit Pelangi Ternate, Jalan Jati Perumnas No.338, Kec. Ternate Sel., Kota Ternate, Maluku Utara
+        <a class="text-xs sm:text-sm md:text-base text-gray-200">
+            Jl. Bola Belakang RS. Islam Kel. Toboleu <br>(Samping Genk’s Gor Bulutangkis)
         </a>
 
         <!-- Map Embed -->
-        <div class="mx-4">
-            <!-- Container iframe responsif -->
-            <div class="mx-auto w-full max-w-md rounded-lg overflow-hidden shadow-lg">
-                <iframe
-                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3989.4562248845773!2d127.36827717496493!3d0.7719263992205737!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x329cb41014dfe6f7%3A0xa05e6f67c14778ef!2sHotel%20Bukit%20Pelangi%20Ternate!5e0!3m2!1sid!2sid!4v1757830014414!5m2!1sid!2sid"
-                    class="w-full h-64 sm:h-80 border-0" allowfullscreen="" loading="lazy"
-                    referrerpolicy="no-referrer-when-downgrade"></iframe>
-            </div>
+        <div class="mt-3 text-center">
+            <a href="https://www.google.com/maps?q=0.809333,127.382834" target="_blank"
+                class="inline-block bg-white  text-pink-950 font-bold py-2 px-6 rounded-lg shadow-lg transition transform hover:scale-105 text-sm sm:text-base">
+                <i class="fa-solid fa-map-location-dot"></i> Maps
+            </a>
         </div>
 
         <!-- Guest Messages Carousel -->
@@ -80,12 +69,11 @@ $hasGuest = isset($guest) && $guest !== null;
             <div class="flex gap-4 overflow-x-auto snap-x snap-mandatory pb-4">
                 @foreach($guests as $g)
                 @if(!empty($g->message))
-                <div
-                    class="min-w-[250px] bg-white/50 backdrop-blur-md border rounded-xl shadow-md p-4 text-center snap-start">
-                    <p class="text-normal sm:text-md md:text-lg font-semibold text-pink-400 font-alumni">
+                <div class="min-w-[250px] bg-white rounded-xl shadow-md p-2 text-center snap-start">
+                    <p class="text-normal sm:text-md md:text-lg font-semibold text-pink-950">
                         {{ $g->name }}
                     </p>
-                    <p class="italic text-pink-400 font-alumni">
+                    <p class="italic text-pink-950">
                         "{{ $g->message }}"
                     </p>
                 </div>
@@ -97,23 +85,23 @@ $hasGuest = isset($guest) && $guest !== null;
         <!-- Tombol Leave a Message: tampil hanya untuk guest saat ini yang belum isi pesan -->
         @if(isset($guest) && trim((string)$guest->message) === '')
         <button id="openGuestModal"
-            class="bg-pink-400 hover:bg-pink-500 text-white px-4 py-2 rounded-lg shadow transition">
-Tinggalkan Ucapan        </button>
+            class="inline-block bg-white  text-pink-950 font-bold py-2 px-6 rounded-lg shadow-lg transition transform hover:scale-105 text-sm sm:text-base">
+            <i class="fa-solid fa-envelope"></i> Leave a Message </button>
         @endif
 
         <!-- Modal -->
         <div id="guestModal"
-            class="hidden fixed inset-0 z-50 flex items-center justify-center w-full h-full bg-white/50 backdrop-blur-sm">
+            class="hidden fixed inset-0 z-50 flex items-center justify-center w-full h-full bg-white/30 backdrop-blur-sm">
             <div class="relative bg-white rounded-lg shadow w-11/12 max-w-2xl">
 
                 <!-- Header -->
                 <div class="flex justify-between items-center p-4 border-b">
-                    <h3 class="text-lg font-semibold text-pink-400">
-                        Tinggalkan Ucapan
+                    <h3 class="text-lg font-semibold text-pink-950">
+                        Leave a Message
                     </h3>
                     <button id="closeGuestModal"
-                        class="text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm w-8 h-8 flex items-center justify-center">
-                        ✖
+                        class="text-pink-950 bg-transparent hover:bg-gray-200 hover:text-pink-900 rounded-lg text-sm w-8 h-8 flex items-center justify-center">
+                        <i class="fa-solid fa-circle-xmark"></i>
                     </button>
                 </div>
 
@@ -128,22 +116,22 @@ Tinggalkan Ucapan        </button>
                         <div>
                             <input type="text" name="name" placeholder="Nama Anda" required
                                 value="{{ $guest->name ?? '' }}"
-                                class="w-full px-3 py-2 mt-1 border text-gray-800 rounded-lg shadow-sm focus:ring-pink-500 focus:border-pink-500">
+                                class="w-full px-3 py-2 mt-1 border text-gray-800 rounded-lg shadow-sm focus:ring-pink-900 focus:border-pink-900">
                         </div>
 
                         <div>
                             <textarea name="message" placeholder="Pesan Anda" rows="3" required
-                                class="w-full px-3 py-2 mt-1 border text-gray-800 rounded-lg shadow-sm focus:ring-pink-500 focus:border-pink-500">{{ $guest->message ?? '' }}</textarea>
+                                class="w-full px-3 py-2 mt-1 border text-gray-800 rounded-lg shadow-sm focus:ring-pink-900 focus:border-pink-900">{{ $guest->message ?? '' }}</textarea>
                         </div>
 
                         <div class="flex justify-end gap-2">
                             <button id="closeGuestModalFooter"
                                 class="bg-gray-300 hover:bg-gray-400 text-gray-900 px-4 py-2 rounded-lg transition">
-                                Batal
+                                Cancel
                             </button>
                             <button type="submit"
-                                class="bg-pink-400 hover:bg-pink-500 text-white px-4 py-2 rounded-lg shadow transition">
-                                Kirim
+                                class="bg-pink-950 hover:bg-pink-900 text-white px-4 py-2 rounded-lg shadow transition">
+                                Submit
                             </button>
                         </div>
                     </form>
@@ -154,19 +142,19 @@ Tinggalkan Ucapan        </button>
         <!-- Musik Latar -->
         <audio id="background-music" loop>
             <source src="{{ asset('audio/backsound.mp3') }}" type="audio/mpeg">
-            Browser kamu tidak mendukung elemen audio.
+            Your browser does not support the audio element.
         </audio>
 
         <!-- Tombol Kontrol Musik -->
         <button id="music-control"
-            class="fixed bottom-6 right-6 bg-pink-400 text-white p-3 rounded-full shadow-lg hover:bg-pink-500 transition">
+            class="fixed bottom-6 right-6 bg-pink-900 text-white p-3 rounded-full shadow-lg hover:bg-pink-950 transition">
             <svg id="music-icon" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
                 stroke="currentColor" class="w-6 h-6">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                     d="M14.752 11.168l-6.518-3.758A1 1 0 007 8.254v7.492a1 1 0 001.234.972l6.518-1.884a1 1 0 000-1.848z" />
             </svg>
         </button>
-@include('layouts.footer')
+        @include('layouts.footer')
     </div>
     <!-- Script untuk modal -->
     <script>
