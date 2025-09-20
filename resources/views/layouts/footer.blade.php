@@ -4,7 +4,7 @@
         <a href="https://instagram.com/aryddntaabbss17_" target="_blank" class="text-white hover:text-pink-400 text-lg">
             <i class="fab fa-instagram"></i>
         </a>
-        <a href="https://facebook.com/aryddntaabbss" target="_blank" class="text-white hover:text-pink-400 text-lg">
+        <a href="https://facebook.com/" target="_blank" class="text-white hover:text-pink-400 text-lg">
             <i class="fab fa-facebook"></i>
         </a>
         <a href="https://github.com/aryddntaabbss" target="_blank" class="text-white hover:text-pink-400 text-lg">

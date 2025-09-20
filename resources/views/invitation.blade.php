@@ -7,7 +7,7 @@ $hasGuest = isset($guest) && $guest !== null;
 
 @section('body')
 
-<div class="relative min-h-screen flex flex-col items-center justify-between text-center">
+<div class="relative min-h-screen flex flex-col items-center justify-between text-center px-4">
 
     <!-- Row 1: Hero Carousel -->
     <div id="animation-carousel" class="relative w-full" data-carousel="slide">
@@ -22,33 +22,35 @@ $hasGuest = isset($guest) && $guest !== null;
     </div>
 
     <!-- Row 2: Header -->
-    <div class="w-full mt-4">
-        <h2 class="text-lg sm:text-xl md:text-2xl tracking-wide font-alumni">
-            We invite you to celebrate our graduation
-        </h2>
-    </div>
+    <!--<div class="w-full mt-4">-->
+        
+    <!--</div>-->
 
     <!-- Row 3: Konten Nama, Tanggal, Alamat, Tombol -->
     <div class="w-full">
 
         <!-- Nama & Keterangan -->
-        <div class="text-center mb-4">
-            <p class="text-4xl sm:text-5xl md:text-5xl font-mea-culpa mb-1 text-pink-400">
+        <div class="text-center m-4">
+            <p class="text-3xl sm:text-5xl md:text-5xl font-mea-culpa mb-1 font-bold text-pink-400">
                 Umairoh Salsabila Ibrahim S.S
             </p>
 
-            <p class="text-normal sm:text-md md:text-lg -mt-2 font-alumni">
-                Class Of 2025 - English Literature Khairun University
+            <p class="text-semibold sm:text-md md:text-lg -mt-2 font-alumni">
+                Angkatan 2025 - Sastra Inggris, Universitas Khairun
             </p>
         </div>
+        
+        <h2 class="text-normal sm:text-md md:text-lg tracking-wide font-alumni mb-2">
+            Kami dengan hormat mengundang Anda untuk hadir dalam perayaan wisuda saya pada tanggal.
+        </h2>
 
         <!-- Tanggal -->
         <div class="flex justify-center gap-4 items-center text-center mb-2 font-alumni">
             <div class="flex-1 text-right text-white font-semibold text-lg sm:text-xl md:text-2xl">
-                Saturday
+                Sabtu
             </div>
             <div class="flex-1 bg-white/50 py-4 rounded-lg text-center text-pink-400">
-                <div class="text-5xl sm:text-6xl md:text-7xl font-semibold">27</div>
+                <div class="text-3xl sm:text-4xl md:text-5xl font-semibold">27</div>
                 <div class="text-lg sm:text-xl md:text-2xl font-semibold">September</div>
             </div>
             <div class="flex-1 text-left text-white font-semibold text-lg sm:text-xl md:text-2xl">
@@ -58,7 +60,7 @@ $hasGuest = isset($guest) && $guest !== null;
 
         <!-- Alamat -->
         <a href="https://maps.app.goo.gl/oGUmtZt3HwWyXwEu9" target="_blank"
-            class="text-normal sm:text-md md:text-lg leading-relaxed font-alumni mx-2 hover:text-pink-400">
+            class="text-normal sm:text-md md:text-lg leading-relaxed font-alumni mx-2 underline hover:text-pink-400">
             Hotel Bukit Pelangi Ternate, Jalan Jati Perumnas No.338, Kec. Ternate Sel., Kota Ternate, Maluku Utara
         </a>
 
@@ -96,8 +98,7 @@ $hasGuest = isset($guest) && $guest !== null;
         @if(isset($guest) && trim((string)$guest->message) === '')
         <button id="openGuestModal"
             class="bg-pink-400 hover:bg-pink-500 text-white px-4 py-2 rounded-lg shadow transition">
-            Leave a Message
-        </button>
+Tinggalkan Ucapan        </button>
         @endif
 
         <!-- Modal -->
@@ -108,7 +109,7 @@ $hasGuest = isset($guest) && $guest !== null;
                 <!-- Header -->
                 <div class="flex justify-between items-center p-4 border-b">
                     <h3 class="text-lg font-semibold text-pink-400">
-                        Leave a Message
+                        Tinggalkan Ucapan
                     </h3>
                     <button id="closeGuestModal"
                         class="text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm w-8 h-8 flex items-center justify-center">
@@ -138,11 +139,11 @@ $hasGuest = isset($guest) && $guest !== null;
                         <div class="flex justify-end gap-2">
                             <button id="closeGuestModalFooter"
                                 class="bg-gray-300 hover:bg-gray-400 text-gray-900 px-4 py-2 rounded-lg transition">
-                                Cancel
+                                Batal
                             </button>
                             <button type="submit"
                                 class="bg-pink-400 hover:bg-pink-500 text-white px-4 py-2 rounded-lg shadow transition">
-                                Update
+                                Kirim
                             </button>
                         </div>
                     </form>
@@ -165,7 +166,7 @@ $hasGuest = isset($guest) && $guest !== null;
                     d="M14.752 11.168l-6.518-3.758A1 1 0 007 8.254v7.492a1 1 0 001.234.972l6.518-1.884a1 1 0 000-1.848z" />
             </svg>
         </button>
-
+@include('layouts.footer')
     </div>
     <!-- Script untuk modal -->
     <script>

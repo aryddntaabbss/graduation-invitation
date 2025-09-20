@@ -83,9 +83,9 @@
             <div class="absolute inset-0 bg-black/20"></div> <!-- overlay -->
 
             <!-- Page Content -->
-            <main class="w-auto h-full z-10 px-4 py-6">
+            <main class="w-auto h-full z-10 py-4">
                 @yield('body')
-                @include('layouts.footer')
+                
             </main>
         </div>
         <script>
